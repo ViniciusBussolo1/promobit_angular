@@ -1,0 +1,46 @@
+<section class="section-filter">
+  <div class="content-filter">
+    <h1 class="title-filter">Milhões de filmes, séries e pessoas para descobrir. Explore já.</h1>
+    <div class="container-items-filter">
+      <span class="items-title-filter">Filtre por:</span>
+      <div class="items-filter" >
+        <div *ngFor="let items of listgenres">
+         <app-items-filter (clickEvent)="getFilmsGenre(items.id)">{{items.name}}</app-items-filter>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main class="main">
+  <div *ngIf="listFilmsGenre$ | async as listFilmsGenre; else listFilms">
+    <div class="container-main">
+      <div class="card" *ngFor="let items of listFilmsGenre$ | async ">
+        <div>
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + items.poster_path" alt="Poster Image">
+          <h4 class="card-title">{{items.title}}</h4>
+          <span class="card-date">{{items.release_date}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <fa-icon [icon]="faChevronLeft" (click)="prevPageFilmsGenre()"></fa-icon>
+      <fa-icon [icon]="faChevronRight" (click)="nextPageFilmsGenre()"></fa-icon>
+    </div>
+  </div>
+  <ng-template #listFilms>
+    <div class="container-main">
+      <div class="card" *ngFor="let items of listFilms$ | async ">
+        <div>
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + items.poster_path" alt="Poster Image">
+          <h4 class="card-title">{{items.title}}</h4>
+          <span class="card-date">{{items.release_date}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <fa-icon [icon]="faChevronLeft" (click)="prevPageFilms()"></fa-icon>
+      <fa-icon [icon]="faChevronRight" (click)="nextPageFilms()"></fa-icon>
+    </div>
+  </ng-template>
+</main>
+

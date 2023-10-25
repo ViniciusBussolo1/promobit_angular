@@ -1,0 +1,53 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { environment } from 'src/app/environments/environments';
+import { Films } from 'src/app/types/films.interface';
+import { Genres } from 'src/app/types/genres.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GetFilmsService {
+  apiUrl = environment.apiUrl
+  apiKey = environment.ACCESS_TOKEN
+
+  options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${this.apiKey}`
+    }
+  };
+
+  constructor(private http: HttpClient) { }
+
+  getFilms(page: number): Observable<Films[]> {
+    const url = `${this.apiUrl}/movie/popular?language=pt-BR&page=${page}`;
+    return this.http.get(url, this.options).pipe(
+      map((response: any) => response.results)
+    )
+  }
+
+  getFiltersGenres(): Observable<Genres[]> {
+    const url = `${this.apiUrl}/genre/movie/list?language=pt-BR`;
+    return this.http.get(url, this.options).pipe(
+      map((response: any) => response.genres)
+    )
+  }
+
+  getTotalPages(): Observable<number> {
+    const url = `${this.apiUrl}/movie/popular?language=pt-BR`;
+    return this.http.get(url, this.options).pipe(
+      map((response: any) => response.total_pages)
+    )
+  }
+
+  getFilmByGenre(id?: number, page?:number): Observable<Films[]> {
+    const url = `${this.apiUrl}/discover/movie?language=pt-BR&with_genres=${id}&page=${page}`;
+    return this.http.get(url, this.options).pipe(
+      map((response: any) => response.results)
+    )
+  }
+
+}

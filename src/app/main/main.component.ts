@@ -11,6 +11,8 @@ import { Genres } from '../types/genres.interface';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  imageLogo = '/assets/Logo.svg'
+
   listFilms$: Observable<Films[]> = new Observable<Films[]>()
   listFilmsGenre$: Observable<Films[]> = new Observable<Films[]>()
   listgenres: Genres[] = []

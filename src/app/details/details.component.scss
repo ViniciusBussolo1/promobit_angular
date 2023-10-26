@@ -1,0 +1,136 @@
+.header {
+  width: 100%;
+  height: 3.5rem; //56px
+
+  padding-left: 7rem; //112px
+
+  background-color: var(--purple-700);
+
+  display: flex;
+  align-items: center;
+}
+
+.section-details {
+  width: 100%;
+  height: 37.5rem; //600px
+
+  padding-top: 72px;
+
+  background-color: var(--purple-800);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.063rem; //33px
+
+  .details {
+    width: 43.75rem; //700px
+
+    .title {
+      margin-bottom: 0.5rem; //8px
+
+      font-size: 2rem; //32px
+      font-style: normal;
+      font-weight: 700;
+      line-height: 2.375rem; //38px
+      letter-spacing: -0.01rem; //-0.16px
+      color: var(--gray-0);
+    }
+
+    .infos {
+      font-size: 1.125rem; //18px
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5rem; //24px
+      color: var(--gray-0);
+    }
+
+    .assessment {
+      margin-top: 1rem; //16px
+
+      display: flex;
+      align-items: center;
+      gap: 0.75rem; //12px
+
+      span {
+        max-width: 6.375rem; //102px
+        width: 100%;
+
+        font-size: 1rem; //16px
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.25rem; //20px
+        color: var(--gray-0);
+      }
+    }
+
+    .sinopse {
+      max-width: 43.5rem; //696px
+      width: 100%;
+
+      margin-top: 2.038rem; //32.6px
+
+      .title {
+        font-size: 1.25rem; //20px
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.5rem; //24px
+      }
+
+      .descrition-sinopse {
+        font-size: 1rem; //16px
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem; //24px
+        letter-spacing: -0.005rem; //-0.08px
+        color: var(--neutral-gray-300);
+      }
+    }
+
+    .direction {
+      max-width: 36.875rem; //590px
+      width: 100%;
+
+      margin-top: 1.5rem; //24px
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem; //32px
+
+      div {
+        max-width: 10.875rem; //174px
+        width: 100%;
+
+        .name {
+          font-size: 1rem; //16px
+          font-style: normal;
+          font-weight: 700;
+          line-height: 1.5rem; //24px
+          color: var(--gray-0);
+        }
+
+        .office {
+          font-size: 0.875rem; //14px
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1.25rem; //20px
+          color: var(--gray-0);
+        }
+      }
+    }
+  }
+}
+
+.cast {
+  width: 100%;
+
+  margin-top: 4.625rem; //72px
+
+  display: flex;
+  justify-content: center;
+
+  div {
+    max-width: 76.938rem; //1231px
+    width: 100%;
+  }
+}

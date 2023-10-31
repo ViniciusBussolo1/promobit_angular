@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,6 +9,10 @@ import { ItemsFilterComponent } from './items-filter/items-filter.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.modules';
 import { DetailsComponent } from './details/details.component';
+
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { DetailsComponent } from './details/details.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

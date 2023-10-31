@@ -10,4 +10,5 @@ export class DetailsComponent {
   imageCapa = '/assets/imageCapa.svg'
   Avaliacao = '/assets/Avaliacao.svg'
   Swiper = '/assets/imageSwiperTeste.svg'
+  SwiperTeste = '/assets/swiperteste.svg'
 }

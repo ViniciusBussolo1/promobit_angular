@@ -112,7 +112,6 @@
 
 <section class="recommendations">
   <div>
-    <h3>Recomendações</h3>
     <swiper-container slides-per-view="6" speed="500">
       <swiper-slide>
         <img [src]="SwiperTeste" alt="Swiper">
@@ -166,3 +165,9 @@
     </swiper-container>
   </div>
 </section>
+
+<div >
+  <div *ngIf="listFilms">
+   <div>{{listFilms.title}}</div>
+  </div>
+</div>

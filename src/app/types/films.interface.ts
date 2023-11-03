@@ -6,3 +6,8 @@ export interface Films {
   total_pages: number
 }
 
+export interface FilmsById {
+  id: number
+  title: string
+}
+

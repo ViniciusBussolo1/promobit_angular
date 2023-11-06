@@ -26,6 +26,12 @@
   .details {
     width: 43.75rem; //700px
 
+    .container-infos {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem; //10px
+    }
+
     .title {
       margin-bottom: 0.5rem; //8px
 
@@ -61,6 +67,10 @@
         font-weight: 400;
         line-height: 1.25rem; //20px
         color: var(--gray-0);
+      }
+
+      .percent {
+        color: rgb(8, 238, 8);
       }
     }
 

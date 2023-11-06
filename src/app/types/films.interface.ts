@@ -9,5 +9,16 @@ export interface Films {
 export interface FilmsById {
   id: number
   title: string
+  release_date: string
+  overview: string
+  genres: [
+    {
+      id: number
+      name: string
+    }
+  ],
+  runtime: number
+  vote_average: number
+  vote_count: number
 }
 

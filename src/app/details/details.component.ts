@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetFilmsService } from '../services/getFilms/get-filmes.service';
-import { Observable, map } from 'rxjs';
 import { Films, FilmsById } from '../types/films.interface';
 
 @Component({
@@ -19,6 +18,15 @@ export class DetailsComponent {
   listFilms: FilmsById = {
     id: 0,
     title: '',
+    release_date: '',
+    overview: '',
+    genres: [{
+      id: 0,
+      name: ''
+    }],
+    runtime: 0,
+    vote_average: 0,
+    vote_count: 0
   };
 
   constructor(private route: ActivatedRoute, private GetFilmsService: GetFilmsService) { }
@@ -42,6 +50,17 @@ export class DetailsComponent {
       }
     )
 
+  }
+
+  convertMinutesInHours(minutos: number): string {
+    const horas = Math.floor(minutos / 60);
+    const minutosRestantes = minutos % 60;
+    return `${horas}h ${minutosRestantes}min`;
+  }
+
+  calculatePercentage(media: number): string {
+    const mediaeEmPorcentagem = (media / 10) * 100
+    return mediaeEmPorcentagem.toFixed(0);
   }
 
 }

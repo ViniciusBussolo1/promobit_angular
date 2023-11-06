@@ -2,23 +2,30 @@
   <img [src]="imageLogo" alt="Logo">
 </header>
 
-<section class="section-details">
+<section class="section-details" *ngIf="listFilms">
   <img [src]="imageCapa" alt="Logo">
   <div class="details">
     <div>
-      <h2 class="title">Deadpool (2016)</h2>
-      <span class="infos">16 anos  • 11/02/2016 (BR)  •  Ação, Aventura, Comédia, Ficção científica • 1h 47m</span>
+      <h2 class="title">{{listFilms.title}}</h2>
+      <div class="container-infos">
+        <span class="infos">16 anos</span>
+        <span class="infos">•</span>
+        <span class="infos">{{listFilms.release_date | date: 'dd/MM/yyyy' }} (BR)</span>
+        <span class="infos">•</span>
+        <ng-container  *ngFor="let genre of listFilms.genres; let last = last">
+          <span class="infos">{{ genre.name }}{{ !last ? ', ' : '' }}</span>
+        </ng-container>
+        <span class="infos">•</span>
+        <span class="infos">{{convertMinutesInHours(listFilms.runtime)}}</span>
+      </div>
     </div>
-    <div class="assessment">
-      <img [src]="Avaliacao" alt="Logo">
+    <div class="assessment" >
+      <div class="percent">{{calculatePercentage(listFilms.vote_average)}}%</div>
       <span>Avaliação dos usuários</span>
     </div>
     <div class="sinopse">
       <h5 class="title">Sinopse</h5>
-      <p class="descrition-sinopse">Baseado no anti-herói não convencional da Marvel Comics, Deadpool conta a história da origem do ex-agente das Forças Especiais que
-        se tornou o mercenário Wade Wilson. Depois de ser submetido a um desonesto experimento que o deixa com poderes de cura acelerada,
-        Wade adota o alter ego de Deadpool. Armado com suas novas habilidades e um senso de humor negro e distorcido, Deadpool persegue
-        o homem que quase destruiu sua vida.</p>
+      <p class="descrition-sinopse">{{listFilms.overview}}</p>
     </div>
     <div class="direction">
       <div>

@@ -15,6 +15,8 @@
   height: 37.5rem; //600px
 
   padding-top: 72px;
+  padding-left: 0.25rem; //4px
+  padding-right: 0.25rem; //4px
 
   background-color: var(--purple-800);
 
@@ -22,6 +24,10 @@
   justify-content: center;
   align-items: flex-start;
   gap: 2.063rem; //33px
+
+  img {
+    height: 35.875rem; //574px
+  }
 
   .details {
     width: 43.75rem; //700px
@@ -137,6 +143,9 @@
   margin-top: 4.625rem; //72px
   margin-bottom: 2.5rem; //40px
 
+  padding-left: 0.25rem; //4px
+  padding-right: 0.25rem; //4px
+
   display: flex;
   justify-content: center;
 
@@ -207,6 +216,9 @@
   margin-top: 4.625rem; //72px
   margin-bottom: 2.5rem; //40px
 
+  padding-left: 0.25rem; //4px
+  padding-right: 0.25rem; //4px
+
   display: flex;
   justify-content: center;
 
@@ -242,6 +254,9 @@
 
   margin-top: 4.625rem; //72px
   margin-bottom: 2.5rem; //40px
+
+  padding-left: 0.25rem; //4px
+  padding-right: 0.25rem; //4px
 
   display: flex;
   justify-content: center;

@@ -3,7 +3,7 @@
 </header>
 
 <section class="section-details" *ngIf="listFilms">
-  <img [src]="imageCapa" alt="Logo">
+  <img [src]="'https://image.tmdb.org/t/p/w500/' + listFilms.poster_path" alt="Poster Image">
   <div class="details">
     <div>
       <h2 class="title">{{listFilms.title}}</h2>
@@ -112,8 +112,7 @@
 <section class="trailer">
   <div>
     <h3>Trailer</h3>
-    <div class="video">
-    </div>
+    <iframe width="907" height="510" [src]="getSafeTrailerUrl(trailer.key)"></iframe>
   </div>
 </section>
 
@@ -173,8 +172,4 @@
   </div>
 </section>
 
-<div >
-  <div *ngIf="listFilms">
-   <div>{{listFilms.title}}</div>
-  </div>
-</div>
+

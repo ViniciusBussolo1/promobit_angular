@@ -11,6 +11,7 @@ export interface FilmsById {
   title: string
   release_date: string
   overview: string
+  poster_path: string
   genres: [
     {
       id: number
@@ -20,5 +21,10 @@ export interface FilmsById {
   runtime: number
   vote_average: number
   vote_count: number
+}
+
+export interface Trailer {
+  name: string
+  key: string
 }
 

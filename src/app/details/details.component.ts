@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetFilmsService } from '../services/getFilms/get-filmes.service';
-import { Films, FilmsById } from '../types/films.interface';
+import { FilmsById, Trailer } from '../types/films.interface';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -20,6 +21,7 @@ export class DetailsComponent {
     title: '',
     release_date: '',
     overview: '',
+    poster_path: '',
     genres: [{
       id: 0,
       name: ''
@@ -28,8 +30,9 @@ export class DetailsComponent {
     vote_average: 0,
     vote_count: 0
   };
+  trailer: Trailer = { name: '', key: '',}
 
-  constructor(private route: ActivatedRoute, private GetFilmsService: GetFilmsService) { }
+  constructor(private route: ActivatedRoute, private GetFilmsService: GetFilmsService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -38,18 +41,33 @@ export class DetailsComponent {
       if (id !== null && id !== '') {
         const idNumber = parseInt(id);
         this.getFilm(idNumber)
+        this.getTrailer(idNumber)
       }
     });
+
+
   }
 
   getFilm(id: number): void {
     this.GetFilmsService.getFilmById(id).subscribe(data =>
       {
         this.listFilms = data
-        console.log(this.listFilms)
       }
     )
 
+  }
+
+  getTrailer(id: number): void {
+    this.GetFilmsService.getTrailer(id).subscribe(data =>
+      {
+        this.trailer = data
+      }
+    )
+  }
+
+  getSafeTrailerUrl(key: string) {
+    const url = `https://www.youtube.com/embed/${key}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   convertMinutesInHours(minutos: number): string {

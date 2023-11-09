@@ -118,56 +118,17 @@
 
 <section class="recommendations">
   <div>
+    <h3>Recomendações</h3>
     <swiper-container slides-per-view="6" speed="500">
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="SwiperTeste" alt="Swiper">
-        <div>
-          <h3>Clifford</h3>
-          <span>12 NOV 2021</span>
-        </div>
-      </swiper-slide>
+      <ng-container class="container" *ngFor="let items of listRecommendations">
+        <swiper-slide>
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + items.poster_path" alt="Poster Path">
+          <div>
+            <h3>{{items.title}}</h3>
+            <span>{{items.release_date}}</span>
+          </div>
+        </swiper-slide>
+      </ng-container>
     </swiper-container>
   </div>
 </section>

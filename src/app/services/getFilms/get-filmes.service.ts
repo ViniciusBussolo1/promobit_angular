@@ -64,4 +64,11 @@ export class GetFilmsService {
     )
   }
 
+  getRecommendations(id: number): Observable<Films[]> {
+    const url = `${this.apiUrl}/movie/678512/recommendations?language=pt-BR&page=1`;
+    return this.http.get(url, this.options).pipe(
+      map((response: any) => response.results)
+    )
+  }
+
 }

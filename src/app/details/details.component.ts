@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetFilmsService } from '../services/getFilms/get-filmes.service';
-import { FilmsById, Trailer } from '../types/films.interface';
+import { Films, FilmsById, Trailer } from '../types/films.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -31,6 +31,7 @@ export class DetailsComponent {
     vote_count: 0
   };
   trailer: Trailer = { name: '', key: '',}
+  listRecommendations: Films[] = []
 
   constructor(private route: ActivatedRoute, private GetFilmsService: GetFilmsService, private sanitizer: DomSanitizer) { }
 
@@ -42,6 +43,7 @@ export class DetailsComponent {
         const idNumber = parseInt(id);
         this.getFilm(idNumber)
         this.getTrailer(idNumber)
+        this.getRecommedations(idNumber)
       }
     });
 
@@ -61,6 +63,14 @@ export class DetailsComponent {
     this.GetFilmsService.getTrailer(id).subscribe(data =>
       {
         this.trailer = data
+      }
+    )
+  }
+
+  getRecommedations(id: number): void {
+    this.GetFilmsService.getRecommendations(id).subscribe(data =>
+      {
+        this.listRecommendations = data
       }
     )
   }

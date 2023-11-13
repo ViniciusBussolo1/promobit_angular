@@ -18,11 +18,11 @@
   <div *ngIf="listFilmsGenre$ | async as listFilmsGenre; else listFilms">
     <div class="container-main">
       <div class="card" *ngFor="let items of listFilmsGenre$ | async ">
-        <div>
+        <a  routerLink="/details/{{items.id}}" routerLinkActive="active" ariaCurrentWhenActive="page">
           <img [src]="'https://image.tmdb.org/t/p/w500/' + items.poster_path" alt="Poster Image">
           <h4 class="card-title">{{items.title}}</h4>
           <span class="card-date">{{items.release_date}}</span>
-        </div>
+        </a>
       </div>
     </div>
     <div class="pagination">

@@ -71,6 +71,7 @@ export class DetailsComponent {
     this.GetFilmsService.getRecommendations(id).subscribe(data =>
       {
         this.listRecommendations = data
+        console.log(data)
       }
     )
   }

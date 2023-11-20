@@ -56,55 +56,15 @@
   <div>
     <h3>Elenco original</h3>
     <swiper-container slides-per-view="6" speed="500" scrollbar="true">
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <img [src]="Swiper" alt="Swiper">
-        <div>
-          <h3>Ryan Reynolds</h3>
-          <span>Wade Wilson / Deadpool</span>
-        </div>
-      </swiper-slide>
+      <ng-container  *ngFor="let items of cast">
+        <swiper-slide>
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + items.profile_path" alt="Poster Path">
+          <div>
+            <h3>{{items.name}}</h3>
+            <span>{{items.character}}</span>
+          </div>
+        </swiper-slide>
+      </ng-container>
     </swiper-container>
   </div>
 </section>

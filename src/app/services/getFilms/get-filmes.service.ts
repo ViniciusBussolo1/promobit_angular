@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/app/environments/environments';
-import { Films, FilmsById, Trailer } from 'src/app/types/films.interface';
+import { Cast, Films, FilmsById, Trailer } from 'src/app/types/films.interface';
 import { Genres } from 'src/app/types/genres.interface';
 
 @Injectable({
@@ -68,6 +68,13 @@ export class GetFilmsService {
     const url = `${this.apiUrl}/movie/${id}/recommendations?language=pt-BR&page=1`;
     return this.http.get(url, this.options).pipe(
       map((response: any) => response.results)
+    )
+  }
+
+  getCast(id: number): Observable<Cast[]> {
+    const url = `${this.apiUrl}/movie/${id}/credits?language=pt-BR`
+    return this.http.get(url, this.options).pipe(
+      map((response: any) => response.cast)
     )
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetFilmsService } from '../services/getFilms/get-filmes.service';
-import { Films, FilmsById, Trailer } from '../types/films.interface';
+import { Cast, Films, FilmsById, Trailer } from '../types/films.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -32,6 +32,7 @@ export class DetailsComponent {
   };
   trailer: Trailer = { name: '', key: '',}
   listRecommendations: Films[] = []
+  cast: Cast[] = []
 
   constructor(private route: ActivatedRoute, private GetFilmsService: GetFilmsService, private sanitizer: DomSanitizer) { }
 
@@ -44,6 +45,7 @@ export class DetailsComponent {
         this.getFilm(idNumber)
         this.getTrailer(idNumber)
         this.getRecommedations(idNumber)
+        this.getCast(idNumber)
       }
     });
 
@@ -71,7 +73,7 @@ export class DetailsComponent {
     this.GetFilmsService.getRecommendations(id).subscribe(data =>
       {
         this.listRecommendations = data
-        console.log(data)
+
       }
     )
   }
@@ -79,6 +81,14 @@ export class DetailsComponent {
   getSafeTrailerUrl(key: string) {
     const url = `https://www.youtube.com/embed/${key}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  getCast(id: number): void {
+    this.GetFilmsService.getCast(id).subscribe(data =>
+      {
+        this.cast = data
+      }
+    )
   }
 
   convertMinutesInHours(minutos: number): string {

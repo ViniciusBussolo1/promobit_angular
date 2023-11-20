@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetFilmsService } from '../services/getFilms/get-filmes.service';
-import { Cast, Films, FilmsById, Trailer } from '../types/films.interface';
+import { Cast, Crew, Films, FilmsById, Trailer } from '../types/films.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -33,6 +33,7 @@ export class DetailsComponent {
   trailer: Trailer = { name: '', key: '',}
   listRecommendations: Films[] = []
   cast: Cast[] = []
+  crew: Crew[] = []
 
   constructor(private route: ActivatedRoute, private GetFilmsService: GetFilmsService, private sanitizer: DomSanitizer) { }
 
@@ -46,6 +47,7 @@ export class DetailsComponent {
         this.getTrailer(idNumber)
         this.getRecommedations(idNumber)
         this.getCast(idNumber)
+        this.getCrew(idNumber)
       }
     });
 
@@ -87,6 +89,18 @@ export class DetailsComponent {
     this.GetFilmsService.getCast(id).subscribe(data =>
       {
         this.cast = data
+      }
+    )
+  }
+
+  getCrew(id: number): void {
+    this.GetFilmsService.getCrew(id).subscribe(data =>
+      {
+        const producerList = data.filter(
+          (member) => member.job === 'Producer'
+        );
+        const limitedProducers = producerList.slice(0, 5);
+        this.crew = limitedProducers
       }
     )
   }

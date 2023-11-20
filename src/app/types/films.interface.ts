@@ -35,3 +35,10 @@ export interface Cast {
   character: string,
 }
 
+export interface Crew {
+  id: number,
+  name: string
+  profile_path: string,
+  job: string
+}
+

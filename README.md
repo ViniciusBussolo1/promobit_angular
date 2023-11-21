@@ -2,7 +2,7 @@
 
 ## 💻 Projeto
 
-Teste da empresa Promobit para aperfeiçoar os conhecimentos em anuglar. O desefio pode ser encontrado através <a href="https://github.com/Promobit/front-end-challenge">deste GitHub</a>
+Teste da empresa Promobit para aperfeiçoar os conhecimentos em anuglar. O desafio pode ser encontrado através <a href="https://github.com/Promobit/front-end-challenge">deste GitHub</a>
 
 ## ✨ Tecnologias
 
